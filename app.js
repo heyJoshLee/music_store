@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var stylus = require("stylus");
 var nib = require("nib");
 
-var routes = require('./routes/index');
+var routes = require('./routes/all');
 
 var app = express();
 
@@ -38,6 +38,8 @@ app.use(function(req, res, next) {
   err.status = 404;
   next(err);
 });
+
+app.locals.basedir = path.join(__dirname, "views");
 
 // error handlers
 

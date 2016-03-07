@@ -7,7 +7,7 @@ function getAlbums() {
   return JSON.parse(fs.readFileSync(file_path, "utf8")).data;
 }
 
-function nextID() {
+function nextId() {
   return JSON.parse(fs.readFileSync(file_path, "utf8")).last_id + 1;
 }
 
@@ -21,7 +21,7 @@ module.exports = function(router) {
         albums = getAlbums();
 
     album.id  = nextId();
-    album.push(album);
+    albums.push(album);
     writeAlbums({ last_id: album.id, data: albums });
     res.json(album);
   });
